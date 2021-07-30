@@ -1,2 +1,2 @@
-# cache-library
-Cache library for symfony
+# cache-bundle
+Cache bundle for symfony
