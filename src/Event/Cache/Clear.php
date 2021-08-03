@@ -6,7 +6,7 @@ use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
- * App\Event\Cache\Clear
+ * Elective\Event\Cache\Clear
  *
  * @author Chris Dixon <chris@electivegroup.com>
  *
