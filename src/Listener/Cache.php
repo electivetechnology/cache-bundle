@@ -10,7 +10,7 @@ use Symfony\Contracts\Cache\TagAwareCacheInterface;
 use Symfony\Component\EventDispatcher\Event;
 
 /**
- * App\CacheBundle\Listener\Cache
+ * Elective\CacheBundle\Listener\Cache
  *
  * @author Chris Dixon <chris@electivegroup.com>
  */
