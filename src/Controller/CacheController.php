@@ -11,10 +11,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Elective\FormatterBundle\Controller\PreFlightTrait;
 
 /**
- * Elective\CacheBundle\Controller\V1\Subscriptions\CacheController
+ * Elective\CacheBundle\Controller\Subscriptions\CacheController
  *
  * @author Chris Dixon
- * @Route("/v1/subscriptions/cache")
+ * @Route("/subscriptions/cache")
  */
 class CacheController extends SubscriptionController
 {
@@ -29,7 +29,7 @@ class CacheController extends SubscriptionController
         ValidatorInterface $subscriptionDataValidator,
         RequestStack $requestStack
     ): Response {
-        $this->getLogger()->info('Started POST: /v1/subscriptions/acl/cache/updated');
+        $this->getLogger()->info('Started POST: /subscriptions/acl/cache/updated');
 
         // Validate data
         try {
@@ -67,7 +67,7 @@ class CacheController extends SubscriptionController
         $this
             ->getLogger()
             ->info('
-                Finished POST: /v1/subscriptions/acl/cache/updated with status: '
+                Finished POST: /subscriptions/acl/cache/updated with status: '
                 . Response::HTTP_NO_CONTENT);
 
         return $this->output(null, Response::HTTP_NO_CONTENT);

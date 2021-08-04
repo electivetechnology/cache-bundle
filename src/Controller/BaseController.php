@@ -16,7 +16,7 @@ use Elective\FormatterBundle\Controller\BaseController as AbstractController;
 use Elective\FormatterBundle\Parsers\Csv as CsvParser;
 
 /**
- * Elective\CacheBundle\Controller\V1\BaseController
+ * Elective\CacheBundle\Controller\BaseController
  *
  * This BaseController class provides method to quickly output data
  * in the desired format using response formatter.

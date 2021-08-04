@@ -10,7 +10,7 @@ use Elective\FormatterBundle\Logger\RequestLoggerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
- * Elective\CacheBundle\Controller\V1\Subscriptions\SubscriptionController
+ * Elective\CacheBundle\Controller\Subscriptions\SubscriptionController
  *
  * This SubscriptionController class provides method to quickly output data
  * in the desired format using response formatter. In addition to BaseController
