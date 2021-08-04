@@ -14,7 +14,7 @@ use Elective\FormatterBundle\Controller\PreFlightTrait;
  * Elective\CacheBundle\Controller\V1\Subscriptions\Acl\AclController
  *
  * @author Chris Dixon
- * @Route("/v1/subscriptions/acl/cache")
+ * @Route("/v1/subscriptions/cache")
  */
 class CacheController extends SubscriptionController
 {
@@ -23,7 +23,7 @@ class CacheController extends SubscriptionController
     public const SUBSCRIPTION_NAME_UPDATED = '-generic-entity-updated-generic';
 
     /**
-     * @Route("/updated", methods={"POST"})
+     * @Route("/clear", methods={"POST"})
      */
     public function updated(
         ValidatorInterface $subscriptionDataValidator,
