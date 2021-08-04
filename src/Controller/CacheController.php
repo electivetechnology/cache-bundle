@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Elective\FormatterBundle\Controller\PreFlightTrait;
 
 /**
- * Elective\CacheBundle\Controller\V1\Subscriptions\Acl\AclController
+ * Elective\CacheBundle\Controller\V1\Subscriptions\CacheController
  *
  * @author Chris Dixon
  * @Route("/v1/subscriptions/cache")
