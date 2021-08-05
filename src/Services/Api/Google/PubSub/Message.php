@@ -8,7 +8,7 @@ use Elective\FormatterBundle\Parsers\Json;
  * App\Services\Api\Google\PubSub\Message
  *
  * A wrapper class that provides common interfaces for PubSub messages
- * @author Kris Rybak <kris.rybak@electivegroup.com>
+ * @author Chris Dixon <chris@electivegroup.com>
  */
 class Message
 {

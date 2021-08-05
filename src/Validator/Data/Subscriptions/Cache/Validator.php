@@ -11,7 +11,7 @@ use Ucc\Data\Validator\ValidatorInterface;
 /**
  * Elective\CacheBundle\Validator\Data\Subscriptions\Cache\Validator;
  *
- * @author Kris Rybak <kris.rybak@electivegroup.com>
+ * @author Chris Dixon <chris@electivegroup.com>
  */
 class Validator extends BaseValidator implements CacheValidatorInterface
 {

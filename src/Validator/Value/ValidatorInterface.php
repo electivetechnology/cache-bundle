@@ -7,7 +7,7 @@ use Ucc\Exception\Data\InvalidDataValueException;
 /**
  *Elective\CacheBundle\Validator\Value\ValidatorInterface;
  *
- * @author Kris Rybak <kris.rybak@electivegroup.com>
+ * @author Chris Dixon <chris@electivegroup.com>
  */
 interface ValidatorInterface
 {

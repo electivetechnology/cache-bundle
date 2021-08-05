@@ -7,7 +7,7 @@ namespace Elective\CacheBundle\Validator\Data\Subscriptions;
  *
  * Interface for strategies to validate Subscriptions Data.
  *
- * @author Kris Rybak <kris@elective.io>
+ * @author Chris Dixon <chris@elective.io>
  */
 interface ValidatorInterface
 {

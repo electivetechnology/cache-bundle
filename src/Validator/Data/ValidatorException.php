@@ -7,7 +7,7 @@ use Exception;
 /**
  * Elective\CacheBundle\Validator\Data\ValidatorException
  *
- * @author  Kris Rybak <kris.rybak@electivegroup.com>
+ * @author  Chris Dixon <chris@electivegroup.com>
  * @todo    Move to elective-bundle
  */
 class ValidatorException extends Exception

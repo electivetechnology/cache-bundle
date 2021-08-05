@@ -7,7 +7,7 @@ use Google\Cloud\PubSub\PubSubClient;
 /**
  * App\Services\Api\Google\PubSub\Client
  *
- * @author Kris Rybak <kris.rybak@electivegroup.com>
+ * @author Chris Dixon <chris@electivegroup.com>
  */
 class Client
 {

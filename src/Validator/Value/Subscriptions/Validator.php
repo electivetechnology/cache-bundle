@@ -9,7 +9,7 @@ use Ucc\Exception\Data\InvalidDataValueException;
 /**
  * Elective\CacheBundleValidator\Value\Subscriptions\Validator
  *
- * @author Kris Rybak <kris.rybak@electivegroup.com>
+ * @author Chris Dixon <chris@electivegroup.com>
  */
 class Validator implements ValidatorInterface
 {
