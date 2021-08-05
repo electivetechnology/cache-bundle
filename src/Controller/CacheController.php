@@ -5,6 +5,11 @@ namespace Elective\CacheBundle\Controller;
 use Elective\CacheBundle\Event\Cache\Clear as ClearEvent;
 use Elective\CacheBundle\Validator\Data\Subscriptions\ValidatorInterface;
 use Elective\CacheBundle\Validator\Data\ValidatorException;
+use Elective\FormatterBundle\Logger\RequestLoggerInterface;
+use Elective\FormatterBundle\Request\HandlerInterface;
+use Elective\FormatterBundle\Response\FormatterInterface;
+use Elective\SecurityBundle\Token\TokenDecoderInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,7 +21,7 @@ use Elective\FormatterBundle\Controller\PreFlightTrait;
  * @author Chris Dixon
  * @Route("/subscriptions/cache")
  */
-class CacheController extends SubscriptionController
+class CacheController extends BaseController
 {
     use PreFlightTrait;
 
@@ -26,9 +31,10 @@ class CacheController extends SubscriptionController
      * @Route("/clear", methods={"POST"})
      */
     public function updated(
-        ValidatorInterface $subscriptionDataValidator,
-        RequestStack $requestStack
+        RequestStack $requestStack,
+        ValidatorInterface $subscriptionDataValidator
     ): Response {
+
         $this->getLogger()->info('Started POST: /subscriptions/acl/cache/updated');
 
         // Validate data
