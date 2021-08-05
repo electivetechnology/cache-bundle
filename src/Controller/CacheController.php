@@ -3,7 +3,7 @@
 namespace Elective\CacheBundle\Controller;
 
 use Elective\CacheBundle\Event\Cache\Clear as ClearEvent;
-use Elective\CacheBundle\Validator\Data\Subscriptions\ValidatorInterface;
+use Elective\CacheBundle\Validator\Data\Subscriptions\Cache\ValidatorInterface as CacheInterface;
 use Elective\CacheBundle\Validator\Data\ValidatorException;
 use Elective\FormatterBundle\Logger\RequestLoggerInterface;
 use Elective\FormatterBundle\Request\HandlerInterface;
@@ -31,8 +31,8 @@ class CacheController extends BaseController
      * @Route("/clear", methods={"POST"})
      */
     public function updated(
-        RequestStack $requestStack,
-        ValidatorInterface $subscriptionDataValidator
+        CacheInterface $subscriptionDataValidator,
+        RequestStack $requestStack
     ): Response {
 
         $this->getLogger()->info('Started POST: /subscriptions/acl/cache/updated');
@@ -49,11 +49,20 @@ class CacheController extends BaseController
 
         $messageData = $safeData->message->getData();
 
-        // Check if Channel Id is present
-        if (!isset($messageData->modelName)) {
+        // Check if entity Id is present
+        if (!isset($messageData->id)) {
             // Ack message as we can not deal with it and we don't want this to clutter Pub/Sub
             // At this stage we probably should also log this somewhere
             $this->getLogger()->error('Pub/Sub message did not contain id');
+
+            return $this->output(null, Response::HTTP_ACCEPTED);
+        }
+
+        // Check if modelName is present
+        if (!isset($messageData->modelName)) {
+            // Ack message as we can not deal with it and we don't want this to clutter Pub/Sub
+            // At this stage we probably should also log this somewhere
+            $this->getLogger()->error('Pub/Sub message did not contain modelName');
 
             return $this->output(null, Response::HTTP_ACCEPTED);
         }
@@ -62,8 +71,9 @@ class CacheController extends BaseController
 
         // Prepare event
         $event = new ClearEvent(
+            $messageData->id,
+            $messageData->modelName,
             $requestStack,
-            $messageData->modelName
         );
 
         // Dispatch Event informing subscribers
