@@ -14,15 +14,29 @@ use Ucc\Exception\Data\InvalidDataValueException;
 class Validator implements ValidatorInterface
 {
     private $subscriptionPrefix;
+    private $cacheSubscriptions;
 
-    public function __construct($subscriptionPrefix)
+    public function __construct($subscriptionPrefix, $cacheSubscriptions)
     {
         $this->setSubscriptionPrefix($subscriptionPrefix);
+        $this->setCacheSubscriptions($cacheSubscriptions);
     }
 
     public function setSubscriptionPrefix(?string $subscriptionPrefix): self
     {
         $this->subscriptionPrefix = $subscriptionPrefix;
+
+        return $this;
+    }
+
+    public function getCacheSubscriptions(): ?string
+    {
+        return $this->cacheSubscriptions;
+    }
+
+    public function setCacheSubscriptions(?string $cacheSubscriptions): self
+    {
+        $this->cacheSubscriptions = $cacheSubscriptions;
 
         return $this;
     }
@@ -34,9 +48,13 @@ class Validator implements ValidatorInterface
 
     public function getSubscriptions(): array
     {
-        return array(
-            $this->getSubscriptionPrefix() . CacheController::SUBSCRIPTION_NAME_UPDATED,
-        );
+        $cacheSubscriptions = explode(',', $this->getCacheSubscriptions());
+
+        foreach($cacheSubscriptions as &$subscription){
+            $subscription =  $this->getSubscriptionPrefix() . $subscription;
+        }
+
+        return $cacheSubscriptions;
     }
 
     public function isValidValue($value)

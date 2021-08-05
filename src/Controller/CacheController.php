@@ -24,9 +24,7 @@ use Elective\FormatterBundle\Controller\PreFlightTrait;
 class CacheController extends BaseController
 {
     use PreFlightTrait;
-
-    public const SUBSCRIPTION_NAME_UPDATED = '-generic-entity-updated-generic';
-
+    
     /**
      * @Route("/clear", methods={"POST"})
      */

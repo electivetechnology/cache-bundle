@@ -20,4 +20,4 @@ services:
         tags: ['controller.service_arguments']
 
     Elective\CacheBundle\Validator\Value\Subscriptions\Validator:
-        arguments: [ '%env(GCP_PUBSUB_SUBSCRIPTION_PREFIX)%' ]
+        arguments: [ '%env(GCP_PUBSUB_SUBSCRIPTION_PREFIX)%', '%env(CACHE_SUBSCRIPTIONS)%' ]
