@@ -17,13 +17,27 @@ class Clear extends Event
 {
     public const NAME = 'cache.clear';
 
+    private $id;
     private $modelName;
     private $requestStack;
 
-    public function __construct(string $modelName, RequestStack $requestStack)
+    public function __construct(string $id, string $modelName, RequestStack $requestStack)
     {
+        $this->id   = $id;
         $this->modelName   = $modelName;
         $this->requestStack = $requestStack;
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    public function setId(?string $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getModelName(): string

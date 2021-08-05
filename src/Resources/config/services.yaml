@@ -1,0 +1,23 @@
+services:
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+        bind:
+            $formatter: '@Elective\FormatterBundle\Response\FormatterInterface'
+            $handler: '@Elective\FormatterBundle\Request\HandlerInterface'
+            $tokenDecoder: '@Elective\SecurityBundle\Token\TokenDecoderInterface'
+            $logger: '@Elective\FormatterBundle\Logger\RequestLoggerInterface'
+            $dispatcher: '@Symfony\Component\EventDispatcher\EventDispatcherInterface'
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    Elective\CacheBundle\:
+        resource: '../../../src/*'
+
+    Elective\CacheBundle\Controller\:
+        resource: '../../Controller'
+        tags: ['controller.service_arguments']
+
+    Elective\CacheBundle\Validator\Value\Subscriptions\Validator:
+        arguments: [ '%env(GCP_PUBSUB_SUBSCRIPTION_PREFIX)%', '%env(CACHE_SUBSCRIPTIONS)%' ]
