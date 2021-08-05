@@ -8,3 +8,11 @@ Add routes to your routing file:
         resource: '@ElectiveCacheBundle/Resources/config/routes.yaml'
 
 ```
+
+Add service to your service file:
+```
+# app/config/services.yaml
+    imports:
+        - { resource: '@ElectiveCacheBundle/Resources/config/services.yaml' }
+```
+
