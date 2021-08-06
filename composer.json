@@ -13,7 +13,7 @@
     "require": {
         "php": "^7.1.13",
         "electivegroup/formatter-bundle": "^0",
-        "electivetechnology/security-bundle": "^0.0.16",
+        "electivetechnology/security-bundle": "^v0.0.16",
         "google/cloud-pubsub": "^1.32",
         "symfony/framework-bundle": "^4.0"
     },
