@@ -16,3 +16,8 @@ Add service to your service file:
         - { resource: '@ElectiveCacheBundle/Resources/config/services.yaml' }
 ```
 
+Add cache subscriptions to your env file, example:
+```
+# app/.env
+    CACHE_SUBSCRIPTIONS=-acl-api-organisation-updated-candidates-api,-acl-api-user-updated-candidates-api
+```
