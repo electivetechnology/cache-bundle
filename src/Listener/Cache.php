@@ -55,7 +55,11 @@ class Cache implements EventSubscriberInterface
 
     public function onCacheClearEvent(Clear $event): Clear
     {
-        $this->cache->invalidateTags([$event->getModelName(), $event->getModelName() . $event->getId()]);
+        $tags = [$event->getModelName()];
+        if ($event->getId() !== ''){
+            $tags[] = $event->getModelName() . $event->getId();
+        }
+        $this->cache->invalidateTags($tags);
 
         return $event;
     }

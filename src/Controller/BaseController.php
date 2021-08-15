@@ -8,12 +8,8 @@ use Elective\FormatterBundle\Traits\Loggable;
 use Elective\FormatterBundle\Response\FormatterInterface;
 use Elective\FormatterBundle\Request\HandlerInterface;
 use Elective\FormatterBundle\Logger\RequestLoggerInterface;
-use Symfony\Component\Security\Core\Exception\{
-    AccessDeniedException
-};
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Elective\FormatterBundle\Controller\BaseController as AbstractController;
-use Elective\FormatterBundle\Parsers\Csv as CsvParser;
 
 /**
  * Elective\CacheBundle\Controller\BaseController
