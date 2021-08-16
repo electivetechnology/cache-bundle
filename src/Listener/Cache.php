@@ -3,6 +3,7 @@
 namespace Elective\CacheBundle\Listener;
 
 use Elective\CacheBundle\Event\Cache\Clear;
+use Elective\CacheBundle\Utils\CacheTag;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Contracts\Cache\TagAwareCacheInterface;
 
@@ -55,7 +56,9 @@ class Cache implements EventSubscriberInterface
 
     public function onCacheClearEvent(Clear $event): Clear
     {
-        $this->cache->invalidateTags([$event->getModelName(), $event->getModelName() . $event->getId()]);
+        $tags = CacheTag::getCacheTags($event->getOrganisation(), $event->getModelName(), $event->getId());
+
+        $this->cache->invalidateTags($tags);
 
         return $event;
     }

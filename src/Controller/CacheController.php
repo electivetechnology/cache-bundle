@@ -47,20 +47,16 @@ class CacheController extends BaseController
 
         $messageData = $safeData->message->getData();
 
-        // Check if entity Id is present
-        if (!isset($messageData->id)) {
-            // Ack message as we can not deal with it and we don't want this to clutter Pub/Sub
-            // At this stage we probably should also log this somewhere
-            $this->getLogger()->error('Pub/Sub message did not contain id');
+        // Check if modelName is present
+        if (!isset($messageData->modelName)) {
+            $this->getLogger()->error('Pub/Sub message did not contain modelName');
 
             return $this->output(null, Response::HTTP_ACCEPTED);
         }
 
-        // Check if modelName is present
-        if (!isset($messageData->modelName)) {
-            // Ack message as we can not deal with it and we don't want this to clutter Pub/Sub
-            // At this stage we probably should also log this somewhere
-            $this->getLogger()->error('Pub/Sub message did not contain modelName');
+        // Check if organisation is present
+        if (!isset($messageData->organisation)) {
+            $this->getLogger()->error('Pub/Sub message did not contain organisation');
 
             return $this->output(null, Response::HTTP_ACCEPTED);
         }
@@ -69,9 +65,10 @@ class CacheController extends BaseController
 
         // Prepare event
         $event = new ClearEvent(
-            $messageData->id,
+            (isset($messageData->id)) ? $messageData->id : '',
             $messageData->modelName,
-            $requestStack,
+            $messageData->organisation,
+            $requestStack
         );
 
         // Dispatch Event informing subscribers
