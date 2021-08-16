@@ -19,12 +19,14 @@ class Clear extends Event
 
     private $id;
     private $modelName;
+    private $organisation;
     private $requestStack;
 
-    public function __construct(string $id, string $modelName, RequestStack $requestStack)
+    public function __construct(string $id, string $modelName, string $organisation, RequestStack $requestStack)
     {
         $this->id   = $id;
         $this->modelName   = $modelName;
+        $this->organisation   = $organisation;
         $this->requestStack = $requestStack;
     }
 
@@ -51,6 +53,19 @@ class Clear extends Event
 
         return $this;
     }
+
+    public function getOrganisation(): string
+    {
+        return $this->organisation;
+    }
+
+    public function setOrganisation(?string $organisation): self
+    {
+        $this->organisation = $organisation;
+
+        return $this;
+    }
+
 
     public function getRequestStack(): RequestStack
     {
