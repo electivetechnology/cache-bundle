@@ -5,11 +5,6 @@ namespace Elective\CacheBundle\Controller;
 use Elective\CacheBundle\Event\Cache\Clear as ClearEvent;
 use Elective\CacheBundle\Validator\Data\Subscriptions\Cache\ValidatorInterface as CacheInterface;
 use Elective\CacheBundle\Validator\Data\ValidatorException;
-use Elective\FormatterBundle\Logger\RequestLoggerInterface;
-use Elective\FormatterBundle\Request\HandlerInterface;
-use Elective\FormatterBundle\Response\FormatterInterface;
-use Elective\SecurityBundle\Token\TokenDecoderInterface;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,7 +14,7 @@ use Elective\FormatterBundle\Controller\PreFlightTrait;
  * Elective\CacheBundle\Controller\Subscriptions\CacheController
  *
  * @author Chris Dixon
- * @Route("/subscriptions/cache")
+ * @Route("/v1/subscriptions/cache")
  */
 class CacheController extends BaseController
 {
