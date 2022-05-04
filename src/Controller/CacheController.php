@@ -28,7 +28,7 @@ class CacheController extends BaseController
         RequestStack $requestStack
     ): Response {
 
-        $this->getLogger()->info('Started POST: /subscriptions/acl/cache/updated');
+        $this->getLogger()->info('Started POST: /subscriptions/cache/updated');
 
         // Validate data
         try {
@@ -73,7 +73,7 @@ class CacheController extends BaseController
         $this
             ->getLogger()
             ->info('
-                Finished POST: /subscriptions/acl/cache/updated with status: '
+                Finished POST: /subscriptions/cache/updated with status: '
                 . Response::HTTP_NO_CONTENT);
 
         return $this->output(null, Response::HTTP_NO_CONTENT);
